@@ -1,7 +1,11 @@
+import fs from 'fs';
 import chalk from 'chalk';
 
-console.log(chalk.blue('olá mundo'));
+function pegaArquivo(caminhoDoArquivo) {
+  const encoding = 'utf-8';
+  fs.readFile(caminhoDoArquivo, encoding, (_, texto) => {
+    console.log(chalk.green(texto));
+  })
+}
 
-console.log(chalk.yellow('São geralmente recuperados a partir de um objeto [FileList](https://developer.mozilla.org/pt-BR/docs/Web/API/FileList) que é retornado como resultado da seleção, pelo usuário, de arquivos através do elemento [<input>](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/Input), a partir do objeto [DataTransfer](https://developer.mozilla.org/pt-BR/docs/Web/API/DataTransfer)'));
-
-console.log(chalk.green('São geralmente recuperados a partir de um objeto [FileList](https://developer.mozilla.org/pt-BR/docs/Web/API/FileList) que é retornado como resultado da seleção, pelo usuário, de arquivos através do elemento [<input>](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/Input), a partir do objeto [DataTransfer](https://developer.mozilla.org/pt-BR/docs/Web/API/DataTransfer)'));
+pegaArquivo('./arquivos/texto.md');
